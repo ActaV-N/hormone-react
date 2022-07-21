@@ -54,13 +54,12 @@ export default class Image{
             s_width = s_height / d_ratio;
         }
 
-        const sx = (this.img.width - s_width) / 2;
         const sy = (this.img.height - s_height) / 2;
 
         const gap = 150
 
         this.sourceInfo = {
-            x:sx + gap / 2,
+            x:gap / 2,
             y:sy + gap / 2,
             w:s_width - gap,
             h:s_height - gap
@@ -77,7 +76,7 @@ export default class Image{
         }, 'start')
 
         tl.to(this.sourceInfo, {
-            x: sx,
+            x: 0,
             y: sy,
             w:s_width,
             h:s_height,
@@ -119,7 +118,7 @@ export default class Image{
             this.y,
             this.width,
             this.height,
-            this.sourceInfo.x + this.sourceInfo.w / 2 * ratio * 1.2,
+            this.sourceInfo.x + this.sourceInfo.w * ratio,
             this.sourceInfo.y,
             this.sourceInfo.w,
             this.sourceInfo.h,

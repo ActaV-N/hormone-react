@@ -9,7 +9,7 @@ import { setXPosition, setYPosition } from '../utils/position';
 import Image from './image';
 import styled from '@emotion/styled';
 import gsap from 'gsap';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 const SketchContainer = styled.div`
     overflow:hidden;
@@ -143,7 +143,7 @@ const P5sketch = () => {
 
             // String particle array generated
             tps = fontRef.current?.textToPoints(title.text, x, y, title.size, {
-                sampleFactor: 0.5,
+                sampleFactor: 0.4,
             }) as {
                 x: number;
                 y: number;
