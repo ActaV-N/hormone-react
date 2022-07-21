@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Hormones from './hormones';
+import Main from './pages/main';
+import P5sketch from './sketch';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>  
+      {/* Routes */}
+      <Routes>
+        <Route path='/' element={<P5sketch />}>
+          <Route index element={<Main/>} />
+          <Route path=':hormoneName' element={<Hormones/>} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
