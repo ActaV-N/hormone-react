@@ -3,6 +3,9 @@ import classNames from "classnames"
 import { ReactNode } from "react"
 
 const StyledInfo = styled.div`
+    width:70%;
+    margin:0 auto;
+
     .info-head{
         text-transform:uppercase;
         font-size: 3.5vw;
@@ -19,18 +22,42 @@ const StyledInfo = styled.div`
         .visual-wrap{
             width:100%;
 
+            aspect-ratio:1.8;
             img{
-                width:calc(100% + 70px);
+                width:100%;
                 height:100%;
                 max-height:100vh;
                 object-fit:cover;
 
-                transform:translate(-35px, 0);
+
+            }
+        }
+    }
+
+    .info-grid--container{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(420px, 1fr));
+
+        column-gap:30px;
+        row-gap:50px;
+
+        margin-top:30px;
+
+        .info-grid--item{
+            .info-item--title{
+                font-size:18px;
+                font-weight:500;
+                margin-bottom:15px;
+            }
+    
+            .info-item--body{
+                letter-spacing:0.05em;
+                line-height:1.5;
+    
+                margin-top:10px;
             }
         }
 
-        
-        
     }
 `
 
@@ -66,12 +93,28 @@ Info.Image = ({src, alt, className, small=false, ...restProps}: ImageProps) => {
     </div>
 }
 
-Info.GridContent = () => {
-
+Info.GridContainer = ({children, className, ...restProps}: BasicPropsType) => {
+    return <div className={classNames(className, "info-grid--container")} {...restProps}>
+        {children}
+    </div>
 }
 
-Info.GridItem = () => {
-    
+Info.GridItem = ({children, className, ...restProps}: BasicPropsType) => {
+    return <div className={classNames(className, 'info-grid--item')} {...restProps}>
+        {children}
+    </div>
+}
+
+Info.GridItemTitle = ({children, className, ...restProps}: BasicPropsType) => {
+    return <div className={classNames(className, 'info-item--title')} {...restProps}>
+        {children}
+    </div>
+}
+
+Info.GridItemBody = ({children, className, ...restProps}: BasicPropsType) => {
+    return <div className={classNames(className, 'info-item--body')} {...restProps}>
+        {children}
+    </div>
 }
 
 export default Info
