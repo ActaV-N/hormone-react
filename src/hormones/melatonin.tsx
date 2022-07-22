@@ -2,15 +2,15 @@ import styled from '@emotion/styled'
 import React from 'react'
 import Info from '../components/HormoneInfo/Info'
 
-const SerotoninContainer = styled.div`
+const MelatoninContainer = styled.div`
 
 `
 
-const Serotonin = () => {
-    return <SerotoninContainer>
+const Melatonin = () => {
+    return <MelatoninContainer>
         <Info>
-            <Info.Head>The happy hormone</Info.Head>
-            <Info.Image src='images/serotonin/serotonin-1.jpg' alt='serotonin' small />
+            <Info.Head>The sleep hormone</Info.Head>
+            <Info.Image src='images/melatonin/melatonin-1.jpg' alt='melatonin' small />
             <Info.GridContainer>
                 <Info.GridItem>
                     <Info.GridItemTitle>Emotion, Appetite, Sleep</Info.GridItemTitle>
@@ -22,7 +22,7 @@ const Serotonin = () => {
                     </Info.GridItemBody>
                 </Info.GridItem>
                 <Info.GridItem>
-                    <Info.GridItemTitle>The happy hormone, serotonin</Info.GridItemTitle>
+                    <Info.GridItemTitle>The happy hormone, Melatonin</Info.GridItemTitle>
                     <Info.GridItemBody>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit cum saepe nesciunt mollitia corporis possimus similique vero officiis quisquam? Omnis.
                     </Info.GridItemBody>
@@ -31,14 +31,14 @@ const Serotonin = () => {
                     </Info.GridItemBody>
                 </Info.GridItem>
                 <Info.GridItem>
-                    <Info.GridItemTitle>How to secrete serotonin</Info.GridItemTitle>
+                    <Info.GridItemTitle>How to secrete Melatonin</Info.GridItemTitle>
                     <Info.GridItemBody>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quod ab tempore temporibus rerum laborum praesentium culpa quo porro nemo nesciunt excepturi, at quaerat adipisci commodi vero quidem nam ea fuga sint necessitatibus eveniet. Aspernatur?
                     </Info.GridItemBody>
                 </Info.GridItem>
             </Info.GridContainer>
         </Info>
-    </SerotoninContainer>
+    </MelatoninContainer>
 }
 
-export default Serotonin
+export default Melatonin

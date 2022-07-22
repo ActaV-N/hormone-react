@@ -1,6 +1,10 @@
 import styled from "@emotion/styled"
 import classNames from "classnames"
-import { ReactNode } from "react"
+import gsap from "gsap"
+import ScrollTrigger from "gsap/ScrollTrigger"
+import { ReactNode, useEffect, useRef } from "react"
+
+gsap.registerPlugin(ScrollTrigger);
 
 const StyledInfo = styled.div`
     width:70%;
@@ -27,16 +31,16 @@ const StyledInfo = styled.div`
                 width:100%;
                 height:100%;
                 max-height:100vh;
+                
                 object-fit:cover;
-
-
+                object-position:0 100%;
             }
         }
     }
 
     .info-grid--container{
         display:grid;
-        grid-template-columns:repeat(auto-fit, minmax(420px, 1fr));
+        grid-template-columns:repeat(auto-fit, minmax(630px, 1fr));
 
         column-gap:30px;
         row-gap:50px;
@@ -45,7 +49,7 @@ const StyledInfo = styled.div`
 
         .info-grid--item{
             .info-item--title{
-                font-size:18px;
+                font-size:26px;
                 font-weight:500;
                 margin-bottom:15px;
             }
@@ -55,6 +59,7 @@ const StyledInfo = styled.div`
                 line-height:1.5;
     
                 margin-top:10px;
+                font-size:22px;
             }
         }
 
@@ -67,7 +72,27 @@ type BasicPropsType = {
 }
 
 const Info = ({children, ...restProps}: BasicPropsType) => {
-    return <StyledInfo {...restProps}>
+    const infoRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const image = infoRef.current?.querySelector('.info-image img') as Element;
+
+        const tl = gsap.timeline({
+            scrollTrigger:{
+                trigger:image,
+                start:'top 80%',
+                end:'bottom top',
+                scrub:1,
+            }
+        }).addLabel('start');
+
+        tl.to(image, {
+            objectPosition:'0 calc(100% + 300px)',
+            ease:'power1.inOut'
+        })
+    }, [])
+
+    return <StyledInfo {...restProps} ref={infoRef}>
         {children}
     </StyledInfo>
 }

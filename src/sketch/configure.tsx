@@ -1,4 +1,7 @@
 import { ReactNode } from "react";
+import Dopamin from "../hormones/dopamin";
+import Endorphin from "../hormones/endorphin";
+import Melatonin from "../hormones/melatonin";
 import Serotonin from "../hormones/serotonin";
 
 export type titleConfType = {
@@ -34,7 +37,8 @@ export const titleConfigures:titleConfiguresType = {
         y:'center',
         image:'/images/melatonin.jpg',
         pColor:'#ffdd99',
-        bColor:'#322244'
+        bColor:'#322244',
+        component: <Melatonin/>
     },
     dophamin:{
         text:'DOPHAMIN',
@@ -43,7 +47,8 @@ export const titleConfigures:titleConfiguresType = {
         y:'center',
         image:'/images/dophamin.jpg',
         pColor:'#fff',
-        bColor:'#ee7073'
+        bColor:'#ee7073',
+        component:<Dopamin/>
     },
     endorphin:{
         text:'ENDORPHIN',
@@ -52,7 +57,8 @@ export const titleConfigures:titleConfiguresType = {
         y:'center',
         image:'/images/endorphin.jpg',
         pColor:'#d5fb45',
-        bColor:'#000000'
+        bColor:'#000000',
+        component:<Endorphin/>
     },
     adrenaline:{
         text:'ADRENALINE',
