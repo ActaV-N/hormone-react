@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
+import Acetylcholine from "../hormones/acetylcholine";
+import Adrenaline from "../hormones/adrenaline";
 import Dopamin from "../hormones/dopamin";
 import Endorphin from "../hormones/endorphin";
 import Melatonin from "../hormones/melatonin";
+import Noradrenaline from "../hormones/noradrenaline";
 import Serotonin from "../hormones/serotonin";
 
 export type titleConfType = {
@@ -67,7 +70,8 @@ export const titleConfigures:titleConfiguresType = {
         y:'center',
         image:'/images/adrenaline.jpg',
         pColor:'#001A2D',
-        bColor:'#B690FF'
+        bColor:'#B690FF',
+        component: <Adrenaline/>
     },
     noradrenaline:{
         text:'NORADRENALINE',
@@ -76,7 +80,8 @@ export const titleConfigures:titleConfiguresType = {
         y:'center',
         image:'/images/noradrenaline.jpg',
         pColor:'#9c1303',
-        bColor:'#000000'
+        bColor:'#000000',
+        component: <Noradrenaline/>
     },
     acetylcholine:{
         text:'ACETYLCHOLINE',
@@ -85,6 +90,7 @@ export const titleConfigures:titleConfiguresType = {
         y:'center',
         image:'/images/acetylcholine.jpg',
         pColor:'#546883',
-        bColor:'#C0CAD7'
+        bColor:'#C0CAD7',
+        component: <Acetylcholine/>
     },
 }
