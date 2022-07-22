@@ -82,7 +82,7 @@ const Info = ({children, ...restProps}: BasicPropsType) => {
                 trigger:image,
                 start:'top 80%',
                 end:'bottom top',
-                scrub:1,
+                scrub:3,
             }
         }).addLabel('start');
 
