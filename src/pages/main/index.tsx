@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import Slider from '../../components/Slider'
+import Slider from '../../components/Slider';
 
 const MainContainer = styled.div`
 `

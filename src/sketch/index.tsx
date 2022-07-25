@@ -40,7 +40,6 @@ export const scrollSubject = new Subject<number>();
 export const animationSubject = new Subject<boolean>();
 
 const images: Image[] = []
-const initialImages: Image[] = []
 
 const DETAIL_TIMEOUT = 700;
 
@@ -111,9 +110,9 @@ const P5sketch = () => {
         for(const conf of Object.values(titleConfigures)){
             const loadedImage = p5.loadImage(conf.image);
             images.push(new Image(loadedImage, i, p5, conf));
-            initialImages.push(new Image(loadedImage, i, p5, conf));
             i++;
         }
+        
     }
 
     const setup = (p5: P5, canvasParentRef: Element) => {

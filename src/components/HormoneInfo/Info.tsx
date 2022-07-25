@@ -87,7 +87,7 @@ const Info = ({children, ...restProps}: BasicPropsType) => {
         }).addLabel('start');
 
         tl.to(image, {
-            objectPosition:'0 calc(100% + 300px)',
+            objectPosition:'0 calc(100% + 100px)',
             ease:'power1.inOut'
         })
     }, [])

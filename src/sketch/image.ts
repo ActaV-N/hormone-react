@@ -3,9 +3,11 @@ import P5 from "p5";
 import { totalScroll, wheelDelta } from ".";
 import { titleConfType } from "./configure";
 
+
 export default class Image{
     public static WIDTH: number = 600;
     public static HEIGHT: number = 800;
+    public static SEG_WIDTH: number = 1000;
 
     public screenState:boolean = true;
 
@@ -20,6 +22,7 @@ export default class Image{
     private y:number;
 
     private maskHeight:number = 800;
+    public initialIndex: number = 0;
 
     private sourceInfo:{
         x:number,
@@ -34,9 +37,12 @@ export default class Image{
         this.x = this.index * (this.width + 100);
         this.scrollX = this.x - totalScroll;
         this.y = (p5.windowHeight - this.height) / 2;
+        this.initialIndex = this.index;
     }
 
     init(){
+        this.updateIndex(this.initialIndex);
+
         this.width = Image.WIDTH;
         this.height = Image.HEIGHT;
         

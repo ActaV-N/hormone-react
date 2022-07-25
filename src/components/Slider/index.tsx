@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import classNames from 'classnames';
 import gsap from 'gsap';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import React, { useEffect, useRef, useState } from 'react';
@@ -61,8 +62,23 @@ const SlideItem = styled.div`
         width:100%;
         height:100%;
 
-        opacity:0;
-        // visibility:hidden;
+
+        .item-container{
+            opacity:0;
+
+            transition:opacity 0.2s cubic-bezier(0.37, 0, 0.63, 1);
+
+            &.animating{
+                opacity:0 !important;
+            }
+        }
+        
+        &:hover{
+            .item-container{
+                opacity:1;
+                transition:opacity 0.3s cubic-bezier(0.37, 0, 0.63, 1);
+            }
+        }
     }
 `;
 
@@ -102,7 +118,7 @@ const Slider = () => {
     return <SliderContainer ref={sliderRef}>
         {Object.values(titleConfigures).map((hormone, i) => <SlideItem key={i}>
             <CustomLink onClick={handlePageMove} data-to={`/${hormone.text.toLowerCase()}`}>
-                <div className='item-container'>
+                <div className={classNames('item-container', isAnimating && 'animating')}>
                     <h1>{hormone.text}</h1>
                 </div>
             </CustomLink>
