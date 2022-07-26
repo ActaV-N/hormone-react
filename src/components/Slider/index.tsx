@@ -21,9 +21,12 @@ const SliderContainer = styled.div`
     z-index:2;
     
     transform-origin:top left;
-    transform:translate(${Image.WIDTH / 2 - 55}px, calc(-50% - ${Image.HEIGHT / 2}px)) rotate(15deg);
+    transform:translateY(calc(-50% - ${Image.HEIGHT / 2}px)) rotate(15deg) translateX(${Image.WIDTH / 2 - 512}px);
 
     display:flex;
+
+    padding-left:500px;
+    box-sizing:content-box;
 
     overflow-x:hidden;
     overflow-y:hidden;
@@ -42,13 +45,18 @@ const SlideItem = styled.div`
     height:800px;
     
     margin-right:100px;
+    transform-origin:top left;
 
     &:nth-last-of-type(1){
         margin:0;
     }
 
     &:nth-of-type(2n){
-        transform:translate(0, 120px);
+        transform:translate(${-60 * Math.cos(Math.PI / 360 * 65)}px, ${60 * Math.sin(Math.PI / 360 * 65)}px);
+    }
+
+    &:nth-of-type(2n + 1){
+        transform:translate(${-60 * Math.cos(Math.PI / 360 * 65)}px, ${-60 * Math.sin(Math.PI / 360 * 65)}px);
     }
 
     a{
@@ -102,8 +110,25 @@ const Slider = () => {
     })
 
     useEffect(() => {
-        if(sliderRef.current){
-            sliderRef.current.scrollTo(scrollValue, 0);
+        const slider = sliderRef.current
+        if(slider){
+            const maxScroll = slider.scrollWidth - slider.offsetWidth;
+
+            if(scrollValue < 0){
+                gsap.set(slider, {
+                    transform:`translateY(calc(-50% - ${Image.HEIGHT / 2}px)) rotate(15deg) translateX(${Image.WIDTH / 2 - 512 - scrollValue}px)`
+                })
+            } else if(scrollValue > maxScroll){
+                gsap.set(slider, {
+                    transform:`translateY(calc(-50% - ${Image.HEIGHT / 2}px)) rotate(15deg) translateX(${Image.WIDTH / 2 - 512 - (scrollValue - maxScroll)}px)`
+                })
+            }
+            else{
+                gsap.set(slider, {
+                    transform:`translateY(calc(-50% - ${Image.HEIGHT / 2}px)) rotate(15deg) translateX(${Image.WIDTH / 2 - 512}px)`
+                })
+                slider.scrollTo(scrollValue, 0);
+            }
         }
     }, [scrollValue])
 
