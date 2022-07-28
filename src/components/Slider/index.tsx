@@ -19,9 +19,11 @@ const SliderContainer = styled.div`
     width:100vw;
 
     z-index:2;
-    
+
     transform-origin:top left;
     transform:translateY(calc(-50% - ${Image.HEIGHT / 2}px)) rotate(15deg) translateX(${Image.WIDTH / 2 - 512}px);
+
+    will-change:transform;
 
     display:flex;
 
@@ -134,7 +136,7 @@ const Slider = () => {
 
     const handlePageMove = (e:any) => {
         const to = e.currentTarget.dataset.to;
-        console.log(isAnimating)
+        
         if(!isAnimating){
             navigate(to);
         }

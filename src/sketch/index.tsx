@@ -1,7 +1,7 @@
 import Sketch from 'react-p5';
 import P5 from 'p5';
 import { Outlet, useParams } from 'react-router-dom';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import roboto from '../fonts/Roboto/Roboto-Regular.ttf';
 import Particle from './particles';
 import { titleConfigures } from './configure';
@@ -158,13 +158,13 @@ const P5sketch = () => {
             for(let i=particleCount; i<particles.length; i++){
                 particles[i].die(i);
             }
-
-            setTimeout(() => {
+            const tid = setTimeout(() => {
                 for(let i=0; i<images.length; i++){
                     images[i].init();
                 }
                 
                 animationSubject.next(false);
+                clearTimeout(tid);
             }, 700);
             
         }
@@ -215,6 +215,15 @@ const P5sketch = () => {
         prev.current = hormoneName;
     }
 
+    const prependImageAtFirst = () => {
+        const first = images[0];
+        if(first.screenState){
+            const prepended = images.splice(-1, 1)[0]
+            prepended.updateIndex(images[0].index - 1);
+            images.unshift(prepended);
+        }
+    }
+
     const mouseWheel = (e:any) => {
         wheelDelta = (e._mouseWheelDeltaY - wheelDelta) * 0.76 * 0.4
         
@@ -228,12 +237,12 @@ const P5sketch = () => {
         if(!hormoneName){
             if(wheelDelta < 0){
                 const first = images[0];
+
                 if(first.screenState){
                     const prepended = images.splice(-1, 1)[0]
                     prepended.updateIndex(images[0].index - 1);
                     images.unshift(prepended);
                 }
-        
             } else{
                 const last = images.slice(-1)[0];
                 
