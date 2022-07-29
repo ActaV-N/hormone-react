@@ -236,13 +236,7 @@ const P5sketch = () => {
 
         if(!hormoneName){
             if(wheelDelta < 0){
-                const first = images[0];
-
-                if(first.screenState){
-                    const prepended = images.splice(-1, 1)[0]
-                    prepended.updateIndex(images[0].index - 1);
-                    images.unshift(prepended);
-                }
+                prependImageAtFirst();
             } else{
                 const last = images.slice(-1)[0];
                 
